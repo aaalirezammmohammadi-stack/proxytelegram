@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MahsaNet Telegram Proxy</title>
+
+    <style>
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            background: #f2f4f7;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .box {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 3px 15px rgba(0,0,0,.1);
+        }
+
+        h1 {
+            font-size: 22px;
+        }
+
+        #status {
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        #content {
+            direction: ltr;
+            text-align: left;
+        }
+
+        a {
+            color: #168acd;
+        }
+
+        button {
+            border: none;
+            background: #168acd;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h1>پروکسی تلگرام MahsaNet</h1>
+
+    <div id="status">
+        در حال دریافت آخرین لیست...
+    </div>
+
+    <button onclick="loadProxies()">
+        🔄 به‌روزرسانی
+    </button>
+
+    <hr>
+
+    <div id="content"></div>
+
+</div>
+
+<script>
+
+const SOURCE =
+"https://raw.githubusercontent.com/mahsanet/MahsaFreeConfig/main/telegram/index.html";
+
+
+async function loadProxies() {
+
+    const status = document.getElementById("status");
+
+    try {
+
+        status.innerText =
+            "در حال دریافت آخرین پروکسی‌ها...";
+
+        // جلوگیری از استفاده مرورگر از نسخه Cache شده
+        const url = SOURCE + "?t=" + Date.now();
+
+        const response = await fetch(url, {
+            cache: "no-store"
+        });
+
+        if (!response.ok) {
+            throw new Error("HTTP " + response.status);
+        }
+
+        const html = await response.text();
+
+        const parser = new DOMParser();
+
+        const documentRemote =
+            parser.parseFromString(html, "text/html");
+
+        document.getElementById("content").innerHTML =
+            documentRemote.body.innerHTML;
+
+        status.innerText =
+            "آخرین اطلاعات با موفقیت دریافت شد: " +
+            new Date().toLocaleString("fa-IR");
+
+    }
+
+    catch (error) {
+
+        status.innerText =
+            "❌ دریافت اطلاعات انجام نشد.";
+
+        console.error(error);
+
+    }
+}
+
+
+// هنگام باز کردن صفحه
+loadProxies();
+
+
+// هر 5 دقیقه خودش دوباره بررسی کند
+setInterval(loadProxies, 5 * 60 * 1000);
+
+</script>
+
+</body>
+</html>
