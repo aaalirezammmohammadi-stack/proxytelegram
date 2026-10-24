@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PayloadContent</key>
+	<array>
+		<dict>
+			<key>PayloadType</key>
+			<string>com.apple.cellular</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+			<key>PayloadIdentifier</key>
+			<string>com.mci.ipv6.cellular</string>
+			<key>PayloadUUID</key>
+			<string>6F1D2C3A-8B4E-4A57-9C21-3E5A7B9D0F11</string>
+			<key>PayloadDisplayName</key>
+			<string>MCI Cellular</string>
+			<key>AttachAPN</key>
+			<dict>
+				<key>Name</key>
+				<string>mcinet</string>
+				<key>AuthenticationType</key>
+				<string>PAP</string>
+				<key>AllowedProtocolMask</key>
+				<integer>3</integer>
+				<key>AllowedProtocolMaskInRoaming</key>
+				<integer>3</integer>
+				<key>AllowedProtocolMaskInDomesticRoaming</key>
+				<integer>3</integer>
+			</dict>
+			<key>APNs</key>
+			<array>
+				<dict>
+					<key>Name</key>
+					<string>mcinet</string>
+					<key>AuthenticationType</key>
+					<string>PAP</string>
+					<key>AllowedProtocolMask</key>
+					<integer>3</integer>
+					<key>AllowedProtocolMaskInRoaming</key>
+					<integer>3</integer>
+					<key>AllowedProtocolMaskInDomesticRoaming</key>
+					<integer>3</integer>
+				</dict>
+			</array>
+		</dict>
+	</array>
+	<key>PayloadType</key>
+	<string>Configuration</string>
+	<key>PayloadVersion</key>
+	<integer>1</integer>
+	<key>PayloadIdentifier</key>
+	<string>com.mci.ipv6</string>
+	<key>PayloadUUID</key>
+	<string>A2B7C4D1-5E93-4F08-B6A2-91C3D8E4F522</string>
+	<key>PayloadDisplayName</key>
+	<string>Hamrah Aval IPv6</string>
+	<key>PayloadDescription</key>
+	<string>APN mcinet with IPv4/IPv6 enabled</string>
+	<key>PayloadOrganization</key>
+	<string>MCI</string>
+	<key>PayloadRemovalDisallowed</key>
+	<false/>
+</dict>
+</plist>
